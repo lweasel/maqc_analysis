@@ -33,9 +33,37 @@ function quantify_with_sailfish {
         READS_SPEC="-l T=PE:O=><:S=U -1 $2 -2 $3"
     fi
 
-    sailfish quant -p 8 -i $SAILFISH_INDEX_DIR $READS_SPEC -o $OUTPUT_DIR
+    sailfish quant \
+        -p 8 \
+        -i $SAILFISH_INDEX_DIR \
+        $READS_SPEC \
+        -o $OUTPUT_DIR
 
     mv $OUTPUT_DIR/quant_bias_corrected.sf ${QUANT_RESULTS_DIR}/${SAMPLE}.sailfish_tpm
+    rm -rf $OUTPUT_DIR
+}
+
+function quantify_with_rsem {
+    SAMPLE=$1
+    
+    OUTPUT_DIR=rsem.$(get_random_id)
+    mkdir -p $OUTPUT_DIR
+    
+    if [ "$#" -eq 2 ]; then
+        # Single-end reads
+        READS_SPEC=$2
+    elif [ "$#" -eq 3 ]; then
+        # Paired-end reads
+        READS_SPEC="--paired-end $2 $3"
+    fi
+
+    rsem-calculate-expression \
+        --p 8 \
+        $READS_SPEC \
+        $TRANSCRIPTS_REFERENCE \
+        $OUTPUT_DIR/quant
+
+    mv $OUTPUT_DIR/quant.genes.results ${QUANT_RESULTS_DIR}/${SAMPLE}.rsem_tpm
     rm -rf $OUTPUT_DIR
 }
 
@@ -44,9 +72,11 @@ mkdir -p $QUANT_RESULTS_DIR
 for sample in $SINGLE_END_SAMPLES; do
     quantify_with_cufflinks $sample ${MAPPED_READS_DIR}/${sample}.bam
     quantify_with_sailfish $sample ${RNA_SEQ_DIR}/${sample}.fastq
+    quantify_with_rsem $sample ${RNA_SEQ_DIR}/${sample}.fastq
 done
 
 for sample in $PAIRED_END_SAMPLES; do
     quantify_with_cufflinks $sample ${MAPPED_READS_DIR}/${sample}.bam
     quantify_with_sailfish $sample ${RNA_SEQ_DIR}/${sample}.1.fastq ${RNA_SEQ_DIR}/${sample}.2.fastq
+    quantify_with_rsem $sample ${RNA_SEQ_DIR}/${sample}.1.fastq ${RNA_SEQ_DIR}/${sample}.2.fastq
 done
