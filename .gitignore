@@ -3,6 +3,7 @@ results/
 tho*
 cufflinks*
 sailfish*
+rsem*
 nohup.out
 hs_bowtie_index
 .map_reads
