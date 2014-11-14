@@ -1,6 +1,8 @@
 data/
 results/
 tho*
+cufflinks*
+sailfish*
 nohup.out
 hs_bowtie_index
 .map_reads
