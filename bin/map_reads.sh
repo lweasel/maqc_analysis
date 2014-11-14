@@ -16,9 +16,9 @@ function map_reads {
 mkdir -p $MAPPED_READS_DIR
 
 for sample in $SINGLE_END_SAMPLES; do
-    map_reads ${MAPPED_READS_DIR}/${sample}.bam ${FASTA_DIR}/${sample}.fastq
+    map_reads ${MAPPED_READS_DIR}/${sample}.bam ${RNA_SEQ_DIR}/${sample}.fastq
 done
 
 for sample in $PAIRED_END_SAMPLES; do
-    map_reads ${MAPPED_READS_DIR}/${sample}.bam ${FASTA_DIR}/${sample}.1.fastq ${FASTA_DIR}/${sample}.2.fastq
+    map_reads ${MAPPED_READS_DIR}/${sample}.bam ${RNA_SEQ_DIR}/${sample}.1.fastq ${RNA_SEQ_DIR}/${sample}.2.fastq
 done

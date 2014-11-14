@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DATA_DIR=data
-FASTA_DIR=data/fasta
+RNA_SEQ_DIR=data/rna_seq
 MAPPED_READS_DIR=mapped_reads
 QUANT_RESULTS_DIR=quant_results
 

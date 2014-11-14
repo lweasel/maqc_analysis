@@ -1,0 +1,10 @@
+data/
+results/
+tho*
+nohup.out
+hs_bowtie_index
+.map_reads
+.run_quantification_tools
+genome_reference/
+mapped_reads/
+quant_results/
