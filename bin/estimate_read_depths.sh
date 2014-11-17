@@ -5,20 +5,29 @@ set -o errexit
 
 source bin/definitions.sh
 
-function estimate_sailfish_read_depth {
-    GENE_EXPRESSION_FILE=$1
-    READ_LENGTH=$2
+function estimate_read_depth {
+    local QUANT_METHOD=$1
+    local GENE_EXPRESSION_FILE=$2
+    local READ_LENGTH=$3
     
-    local TMP_FILE=sailfish_transcripts_tmp.$(get_random_id)
+    local TMP_FILE=transcripts_tmp.$(get_random_id)
 
     grep -v '^# \[' $GENE_EXPRESSION_FILE |
         sed 's/# //' > $TMP_FILE
 
-    ${PYTHON_SCRIPT_DIR}/estimate_sailfish_read_depth.py $TMP_FILE $READ_LENGTH
+    ${PYTHON_SCRIPT_DIR}/estimate_read_depth.py $QUANT_METHOD $TMP_FILE $READ_LENGTH
 
     rm $TMP_FILE
 }
 
-for sample in $SINGLE_END_SAMPLES $PAIRED_END_SAMPLES; do
-    echo Sailfish,$sample,$(estimate_sailfish_read_depth ${QUANT_RESULTS_DIR}/${sample}.sailfish_tpm "${READ_LENGTHS[$sample]}")
+for sample in $SINGLE_END_SAMPLES; do
+    for quant_method in sailfish express; do
+        echo ${quant_method},$sample,$(estimate_read_depth ${quant_method} ${QUANT_RESULTS_DIR}/${sample}.${quant_method}_tpm "${READ_LENGTHS[$sample]} False")
+    done
+done
+
+for sample in $PAIRED_END_SAMPLES; do
+    for quant_method in sailfish express; do
+        echo ${quant_method},$sample,$(estimate_read_depth ${quant_method} ${QUANT_RESULTS_DIR}/${sample}.${quant_method}_tpm "${READ_LENGTHS[$sample]} True")
+    done
 done
