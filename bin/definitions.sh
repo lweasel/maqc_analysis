@@ -25,6 +25,21 @@ MAPPED_TO_TRANSCRIPTOME_SUFFIX=transcriptome.bam
 SINGLE_END_SAMPLES="bullard_uhr bullard_hbr"
 PAIRED_END_SAMPLES="rapaport_uhr_1 rapaport_uhr_2 rapaport_uhr_3 rapaport_uhr_4 rapaport_uhr_5 rapaport_hbr_1 rapaport_hbr_2 rapaport_hbr_3 rapaport_hbr_4 rapaport_hbr_5 au_hbr"
 
+declare -A READ_LENGTHS=(
+    ["bullard_uhr"]="35" 
+    ["bullard_hbr"]="35" 
+    ["rapaport_uhr_1"]="101" 
+    ["rapaport_uhr_2"]="101" 
+    ["rapaport_uhr_3"]="101" 
+    ["rapaport_uhr_4"]="101" 
+    ["rapaport_uhr_5"]="101" 
+    ["rapaport_hbr_1"]="101" 
+    ["rapaport_hbr_2"]="101" 
+    ["rapaport_hbr_3"]="101" 
+    ["rapaport_hbr_4"]="101" 
+    ["rapaport_hbr_5"]="101" 
+    ["au_hbr"]="50" )
+
 function get_random_id {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1   
 }

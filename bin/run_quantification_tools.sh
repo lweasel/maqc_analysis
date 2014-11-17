@@ -84,16 +84,16 @@ function quantify_with_express {
 
 mkdir -p $QUANT_RESULTS_DIR
 
-#for sample in $SINGLE_END_SAMPLES; do
-    #quantify_with_cufflinks $sample ${MAPPED_READS_DIR}/${sample}.${MAPPED_TO_GENOME_SUFFIX}
-    #quantify_with_sailfish $sample ${RNA_SEQ_DIR}/${sample}.fastq
-    #quantify_with_rsem $sample ${RNA_SEQ_DIR}/${sample}.fastq &
-    #quantify_with_express $sample ${MAPPED_READS_DIR}/${sample}.${MAPPED_TO_TRANSCRIPTOME_SUFFIX}
-#done
+for sample in $SINGLE_END_SAMPLES; do
+    quantify_with_cufflinks $sample ${MAPPED_READS_DIR}/${sample}.${MAPPED_TO_GENOME_SUFFIX}
+    quantify_with_sailfish $sample ${RNA_SEQ_DIR}/${sample}.fastq
+    quantify_with_rsem $sample ${RNA_SEQ_DIR}/${sample}.fastq &
+    quantify_with_express $sample ${MAPPED_READS_DIR}/${sample}.${MAPPED_TO_TRANSCRIPTOME_SUFFIX}
+done
 
 for sample in $PAIRED_END_SAMPLES; do
     quantify_with_cufflinks $sample ${MAPPED_READS_DIR}/${sample}.${MAPPED_TO_GENOME_SUFFIX} &
-    #quantify_with_sailfish $sample ${RNA_SEQ_DIR}/${sample}.1.fastq ${RNA_SEQ_DIR}/${sample}.2.fastq
-    #quantify_with_rsem $sample ${RNA_SEQ_DIR}/${sample}.1.fastq ${RNA_SEQ_DIR}/${sample}.2.fastq &
-    #quantify_with_express $sample ${MAPPED_READS_DIR}/${sample}.${MAPPED_TO_TRANSCRIPTOME_SUFFIX}
+    quantify_with_sailfish $sample ${RNA_SEQ_DIR}/${sample}.1.fastq ${RNA_SEQ_DIR}/${sample}.2.fastq
+    quantify_with_rsem $sample ${RNA_SEQ_DIR}/${sample}.1.fastq ${RNA_SEQ_DIR}/${sample}.2.fastq &
+    quantify_with_express $sample ${MAPPED_READS_DIR}/${sample}.${MAPPED_TO_TRANSCRIPTOME_SUFFIX} &
 done
