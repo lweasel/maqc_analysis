@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -o nounset
+set -o errexit
+
 source bin/definitions.sh
 
 function map_reads_to_genome {

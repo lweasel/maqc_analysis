@@ -9,6 +9,9 @@ nohup.out
 hs_bowtie_index
 .map_reads
 .run_quantification_tools
+.calculate_gene_expression
+protein_coding_gene_ids.txt
 genome_reference/
 mapped_reads/
 quant_results/
+gene_expression/

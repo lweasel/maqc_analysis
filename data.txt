@@ -1,29 +1,32 @@
 data:
-total 16
-drwxrwxr-x  2 odando odando 4096 Nov 13 13:50 .
-drwxrwxr-x 21 odando odando 4096 Nov 13 14:45 ..
-lrwxrwxrwx  1 odando odando   55 Nov 13 13:48 au_hbr.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE19166_au/reads_1.fastq
-lrwxrwxrwx  1 odando odando   55 Nov 13 13:48 au_hbr.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE19166_au/reads_2.fastq
-lrwxrwxrwx  1 odando odando   75 Nov 13 13:50 bullard_hbr.fastq -> /home/odando/data/MAQC/rnaseq/SRA010153_bullard/SRX016366_brain/reads.fastq
-lrwxrwxrwx  1 odando odando   73 Nov 13 13:49 bullard_uhr.fastq -> /home/odando/data/MAQC/rnaseq/SRA010153_bullard/SRX016368_UHR/reads.fastq
-lrwxrwxrwx  1 odando odando   45 Nov 13 13:45 per_contig -> /srv/data/genome/human/ensembl-75/per_contig/
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:47 rapaport_hbr_1.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B1_1.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:47 rapaport_hbr_1.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B1_2.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:47 rapaport_hbr_2.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B2_1.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:47 rapaport_hbr_2.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B2_2.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:47 rapaport_hbr_3.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B3_1.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:47 rapaport_hbr_3.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B3_2.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:47 rapaport_hbr_4.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B4_1.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:47 rapaport_hbr_4.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B4_2.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:47 rapaport_hbr_5.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B5_1.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:47 rapaport_hbr_5.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B5_2.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:46 rapaport_uhr_1.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A1_1.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:46 rapaport_uhr_1.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A1_2.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:46 rapaport_uhr_2.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A2_1.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:46 rapaport_uhr_2.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A2_2.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:46 rapaport_uhr_3.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A3_1.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:46 rapaport_uhr_3.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A3_2.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:46 rapaport_uhr_4.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A4_1.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:46 rapaport_uhr_4.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A4_2.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:46 rapaport_uhr_5.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A5_1.fastq
-lrwxrwxrwx  1 odando odando   58 Nov 13 13:46 rapaport_uhr_5.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A5_2.fastq
+total 8
+lrwxrwxrwx 1 odando odando   96 Nov 14 11:13 human_protein_coding.gtf -> /srv/data/genome/human/ensembl-75/Homo_sapiens.GRCh37.75.exons.protein_coding.nopatch_sorted.gtf
+lrwxrwxrwx 1 odando odando   45 Nov 13 13:45 per_contig -> /srv/data/genome/human/ensembl-75/per_contig/
+drwxrwxr-x 2 odando odando 4096 Nov 14 11:52 rna_seq
+
+data/rna_seq:
+total 8
+lrwxrwxrwx 1 odando odando 55 Nov 13 13:48 au_hbr.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE19166_au/reads_1.fastq
+lrwxrwxrwx 1 odando odando 55 Nov 13 13:48 au_hbr.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE19166_au/reads_2.fastq
+lrwxrwxrwx 1 odando odando 75 Nov 13 13:50 bullard_hbr.fastq -> /home/odando/data/MAQC/rnaseq/SRA010153_bullard/SRX016366_brain/reads.fastq
+lrwxrwxrwx 1 odando odando 73 Nov 13 13:49 bullard_uhr.fastq -> /home/odando/data/MAQC/rnaseq/SRA010153_bullard/SRX016368_UHR/reads.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:47 rapaport_hbr_1.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B1_1.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:47 rapaport_hbr_1.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B1_2.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:47 rapaport_hbr_2.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B2_1.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:47 rapaport_hbr_2.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B2_2.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:47 rapaport_hbr_3.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B3_1.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:47 rapaport_hbr_3.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B3_2.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:47 rapaport_hbr_4.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B4_1.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:47 rapaport_hbr_4.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B4_2.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:47 rapaport_hbr_5.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B5_1.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:47 rapaport_hbr_5.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/B5_2.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:46 rapaport_uhr_1.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A1_1.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:46 rapaport_uhr_1.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A1_2.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:46 rapaport_uhr_2.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A2_1.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:46 rapaport_uhr_2.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A2_2.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:46 rapaport_uhr_3.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A3_1.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:46 rapaport_uhr_3.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A3_2.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:46 rapaport_uhr_4.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A4_1.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:46 rapaport_uhr_4.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A4_2.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:46 rapaport_uhr_5.1.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A5_1.fastq
+lrwxrwxrwx 1 odando odando 58 Nov 13 13:46 rapaport_uhr_5.2.fastq -> /home/odando/data/MAQC/rnaseq/GSE49712_rapaport/A5_2.fastq

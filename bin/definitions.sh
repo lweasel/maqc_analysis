@@ -1,14 +1,23 @@
 #!/bin/bash
 
+set -o nounset
+set -o errexit
+
 DATA_DIR=data
 RNA_SEQ_DIR=data/rna_seq
 MAPPED_READS_DIR=mapped_reads
 GENOME_REF_DIR=genome_reference
 QUANT_RESULTS_DIR=quant_results
+GENE_EXPRESSION_DIR=gene_expression
 
+GTF_FILE=${DATA_DIR}/human_protein_coding.gtf 
 BOWTIE_INDEX=hs_bowtie_index/per_contig
 SAILFISH_INDEX_DIR=${GENOME_REF_DIR}/sailfish
 TRANSCRIPTS_REFERENCE=${GENOME_REF_DIR}/transcripts/ref
+PROTEIN_CODING_GENE_IDS=protein_coding_gene_ids.txt
+
+BIN_DIR=bin
+PYTHON_SCRIPT_DIR=${BIN_DIR}/python
 
 MAPPED_TO_GENOME_SUFFIX=genome.bam
 MAPPED_TO_TRANSCRIPTOME_SUFFIX=transcriptome.bam
