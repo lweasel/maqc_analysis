@@ -102,7 +102,7 @@ for sample in $SINGLE_END_SAMPLES $PAIRED_END_SAMPLES; do
     calculate_rsem_gene_expression \
         ${QUANT_RESULTS_DIR}/${sample}.rsem_tpm \
         $GENE_EXPRESSION_DIR/${sample}.rsem_genes.txt
-    calculate_cufflinks_gene_expression 
+    calculate_cufflinks_gene_expression \
         ${QUANT_RESULTS_DIR}/${sample}.cufflinks_fpkm \
         $GENE_EXPRESSION_DIR/${sample}.cufflinks_genes.txt
 done
