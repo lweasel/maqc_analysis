@@ -22,12 +22,12 @@ function estimate_read_depth {
 
 for sample in $SINGLE_END_SAMPLES; do
     for quant_method in sailfish express; do
-        echo ${quant_method},$sample,$(estimate_read_depth ${quant_method} ${QUANT_RESULTS_DIR}/${sample}.${quant_method}_tpm "${READ_LENGTHS[$sample]} False")
+        echo ${quant_method},$sample,$(estimate_read_depth ${quant_method} ${QUANT_RESULTS_DIR}/${sample}.${quant_method}_tpm "${READ_LENGTHS[$sample]}" False)
     done
 done
 
 for sample in $PAIRED_END_SAMPLES; do
     for quant_method in sailfish express; do
-        echo ${quant_method},$sample,$(estimate_read_depth ${quant_method} ${QUANT_RESULTS_DIR}/${sample}.${quant_method}_tpm "${READ_LENGTHS[$sample]} True")
+        echo ${quant_method},$sample,$(estimate_read_depth ${quant_method} ${QUANT_RESULTS_DIR}/${sample}.${quant_method}_tpm "${READ_LENGTHS[$sample]}" True)
     done
 done

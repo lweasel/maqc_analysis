@@ -9,12 +9,14 @@ MAPPED_READS_DIR=mapped_reads
 GENOME_REF_DIR=genome_reference
 QUANT_RESULTS_DIR=quant_results
 GENE_EXPRESSION_DIR=gene_expression
+ANALYSIS_DIR=analysis
 
 GTF_FILE=${DATA_DIR}/human_protein_coding.gtf 
 BOWTIE_INDEX=hs_bowtie_index/per_contig
 SAILFISH_INDEX_DIR=${GENOME_REF_DIR}/sailfish
 TRANSCRIPTS_REFERENCE=${GENOME_REF_DIR}/transcripts/ref
 PROTEIN_CODING_GENE_IDS=protein_coding_gene_ids.txt
+GENE_SYNONYMS=${DATA_DIR}/synonyms.txt
 
 BIN_DIR=bin
 PYTHON_SCRIPT_DIR=${BIN_DIR}/python
@@ -39,6 +41,21 @@ declare -A READ_LENGTHS=(
     ["rapaport_hbr_4"]="101" 
     ["rapaport_hbr_5"]="101" 
     ["au_hbr"]="50" )
+
+declare -A REF_TYPES=(
+    ["bullard_uhr"]="uhr" 
+    ["bullard_hbr"]="hbr" 
+    ["rapaport_uhr_1"]="uhr" 
+    ["rapaport_uhr_2"]="uhr" 
+    ["rapaport_uhr_3"]="uhr" 
+    ["rapaport_uhr_4"]="uhr" 
+    ["rapaport_uhr_5"]="uhr" 
+    ["rapaport_hbr_1"]="hbr" 
+    ["rapaport_hbr_2"]="hbr" 
+    ["rapaport_hbr_3"]="hbr" 
+    ["rapaport_hbr_4"]="hbr" 
+    ["rapaport_hbr_5"]="hbr" 
+    ["au_hbr"]="hbr" )
 
 function get_random_id {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1   
