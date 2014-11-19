@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
-"""Usage:
+"""
+Usage:
     taq_correlation
         [--log-level=<log-level>] --ref=<ref-type>
         <taq-file> <quant-file> <synonym-file>
 
+Options:
 -h --help
     Show this message.
 -v --version
@@ -25,6 +27,7 @@
 
 import docopt
 import matplotlib.pyplot as plt
+import maqc
 import numpy as np
 import ordutils.log as log
 import ordutils.options as opt
@@ -39,22 +42,8 @@ TAQMAN_EXPRESSION_FILE = "<taq-file>"
 QUANTIFICATION_FILE = "<quant-file>"
 SYNONYM_FILE = "<synonym-file>"
 
-UNIVERSAL_HUMAN_REF = "uhr"
-AMBION_HUMAN_BRAIN_REF = "hbr"
-REFERENCE_SETS = [UNIVERSAL_HUMAN_REF, AMBION_HUMAN_BRAIN_REF]
-
-MEAN_UHRR = "mean UHRR"
-MEAN_HBRR = "mean HBRR"
-GROUND_TRUTH_COL = {
-    UNIVERSAL_HUMAN_REF: MEAN_UHRR,
-    AMBION_HUMAN_BRAIN_REF: MEAN_HBRR
-}
-
 GENE_COL = "gene"
 TPM_COL = "TPM"
-
-TAQMAN_NAME_COL = "taq_name"
-ENSEMBL_NAME = "ensembl_name"
 
 
 def validate_command_line_options(options):
@@ -73,30 +62,10 @@ def validate_command_line_options(options):
 
         options[REF_TYPE] = options[REF_TYPE].lower()
         opt.validate_list_option(
-            options[REF_TYPE], REFERENCE_SETS,
+            options[REF_TYPE], maqc.REFERENCE_SETS,
             "Invalid reference type")
     except schema.SchemaError as exc:
         exit(exc.code)
-
-
-def get_synonyms(synonym_file, logger):
-    logger.info("Reading synonyms from " + synonym_file)
-    return pd.read_csv(
-        synonym_file, delim_whitespace=True, index_col=TAQMAN_NAME_COL)
-
-
-def get_taqman_abundances(taqman_file, synonyms, logger):
-    taqman = pd.read_csv(taqman_file, delim_whitespace=True)
-
-    taqman[MEAN_UHRR] = \
-        (taqman["A1"] + taqman["A2"] + taqman["A3"] + taqman["A4"]) / 4
-    taqman[MEAN_HBRR] = \
-        (taqman["B1"] + taqman["B2"] + taqman["B3"] + taqman["B4"]) / 4
-
-    taqman[GENE_COL] = taqman[GENE_COL].map(
-        lambda x: synonyms.ix[x][ENSEMBL_NAME] if x in synonyms.index else x)
-
-    return taqman
 
 
 def get_quantification_results(quant_file, logger):
@@ -112,7 +81,7 @@ def calculate_correlation(taqman, quant, ref_type, logger):
 
     num_genes = len(taqman)
 
-    ground_truth = taqman[GROUND_TRUTH_COL[ref_type]]
+    ground_truth = maqc.get_ground_truth_abundances(taqman, ref_type)
     corr = ground_truth.corr(taqman[TPM_COL], method='spearman')
 
     logger.info("Number of genes: " + str(num_genes))
@@ -123,7 +92,7 @@ def calculate_correlation(taqman, quant, ref_type, logger):
 
 def draw_abundance_scatter_plot(taqman, ref_type):
     plt.figure()
-    plt.scatter(np.log10(taqman[GROUND_TRUTH_COL[ref_type]]).values,
+    plt.scatter(np.log10(taqman[maqc.GROUND_TRUTH_COL[ref_type]]).values,
                 np.log10(taqman[TPM_COL]).values,
                 c="lightblue", alpha=0.4)
     plt.savefig("scatter.svg", format="svg")
@@ -134,7 +103,7 @@ def main(docstring):
     # Read in command-line options
     docstring = docstring.format(
         log_level_vals=LOG_LEVEL_VALS,
-        ref_sets=REFERENCE_SETS)
+        ref_sets=maqc.REFERENCE_SETS)
     options = docopt.docopt(docstring, version="taq_correlations v1.0")
 
     # Validate command-line options
@@ -144,10 +113,10 @@ def main(docstring):
     logger = log.get_logger(sys.stderr, options[LOG_LEVEL])
 
     # Read in synonym file
-    synonyms = get_synonyms(options[SYNONYM_FILE], logger)
+    synonyms = maqc.get_synonyms(options[SYNONYM_FILE], logger)
 
     # Read in TaqMan abundance measurements
-    taqman = get_taqman_abundances(
+    taqman = maqc.get_taqman_abundances(
         options[TAQMAN_EXPRESSION_FILE], synonyms, logger)
 
     # Read in abundances estimated by quantifier

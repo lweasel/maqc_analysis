@@ -11,6 +11,7 @@ hs_bowtie_index
 .prepare_transcript_reference
 .run_quantification_tools
 .calculate_gene_expression
+.get_quantification_ranks
 protein_coding_gene_ids.txt
 taq_genes.txt
 genome_reference/

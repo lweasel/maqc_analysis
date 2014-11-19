@@ -18,6 +18,7 @@ SAILFISH_INDEX_DIR=${GENOME_REF_DIR}/sailfish
 TRANSCRIPTS_REFERENCE=${GENOME_REF_DIR}/transcripts/ref
 PROTEIN_CODING_GENE_IDS=protein_coding_gene_ids.txt
 GENE_SYNONYMS=${DATA_DIR}/synonyms.txt
+TAQMAN_GENE_ABUNDANCES=taq_genes.txt
 
 BIN_DIR=bin
 PYTHON_SCRIPT_DIR=${BIN_DIR}/python
