@@ -92,8 +92,12 @@ def calculate_ranks(taqman, quant_results, ref_type, logger):
 
         quant_rank_col = quant_id + ".rank"
         taqman[quant_rank_col] = taqman[quant_id].rank(ascending=False)
-        taqman[quant_id + "-taqman.rank_diff"] = \
+
+        rank_diff_col = quant_id + "-taqman.rank_diff"
+        taqman[rank_diff_col] = \
             taqman[quant_rank_col] - taqman[ground_truth_rank_col]
+
+        taqman[quant_id + "-taqman.abs_rank_diff"] = abs(taqman[rank_diff_col])
 
     print(taqman.to_csv())
 

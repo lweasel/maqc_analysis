@@ -1,10 +1,15 @@
 #!/usr/bin/env python
 
+import itertools
 import pandas as pd
 
 UNIVERSAL_HUMAN_REF = "uhr"
 AMBION_HUMAN_BRAIN_REF = "hbr"
 REFERENCE_SETS = [UNIVERSAL_HUMAN_REF, AMBION_HUMAN_BRAIN_REF]
+
+# A = UHR, B = HBR, C = A:B 75:25, D = A:B 25:75
+SAMPLES = ["A", "B", "C", "D"]
+REPLICATES = ["1", "2", "3", "4"]
 
 MEAN_UHRR = "mean UHRR"
 MEAN_HBRR = "mean HBRR"
@@ -33,6 +38,12 @@ def get_taqman_abundances(taqman_file, synonyms, logger):
         (taqman["A1"] + taqman["A2"] + taqman["A3"] + taqman["A4"]) / 4
     taqman[MEAN_HBRR] = \
         (taqman["B1"] + taqman["B2"] + taqman["B3"] + taqman["B4"]) / 4
+
+    # Now that we have calculate the mean abundances for the UHR and HBR
+    # samples, drop the columns containing raw per-replicate abundances
+    taqman.drop(["".join(pair) for pair in
+                itertools.product(SAMPLES, REPLICATES)],
+                inplace=True, axis=1)
 
     taqman[GENE_COL] = taqman[GENE_COL].map(
         lambda x: synonyms.ix[x][SYNONYMS_ENSEMBL_NAME]
