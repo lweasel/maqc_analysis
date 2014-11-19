@@ -12,7 +12,8 @@ GENE_EXPRESSION_DIR=gene_expression
 ANALYSIS_DIR=analysis
 
 GTF_FILE=${DATA_DIR}/human_protein_coding.gtf 
-BOWTIE_INDEX=hs_bowtie_index/per_contig
+BOWTIE_INDEX_DIR=hs_bowtie_index
+BOWTIE_INDEX=${BOWTIE_INDEX_DIR}/per_contig
 SAILFISH_INDEX_DIR=${GENOME_REF_DIR}/sailfish
 TRANSCRIPTS_REFERENCE=${GENOME_REF_DIR}/transcripts/ref
 PROTEIN_CODING_GENE_IDS=protein_coding_gene_ids.txt
@@ -59,4 +60,13 @@ declare -A REF_TYPES=(
 
 function get_random_id {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1   
+}
+
+function list_files {
+    local DELIMITER=$1
+    shift
+    local FILES=$@
+    
+    OUTPUT=$(ls -1 $FILES | tr '\n' "$DELIMITER")
+    echo ${OUTPUT%$DELIMITER}    
 }

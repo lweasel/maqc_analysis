@@ -63,9 +63,7 @@ $(MAP_READS): $(BOWTIE_INDEX_DIR)
 	touch $@
 
 $(BOWTIE_INDEX_DIR):
-	mkdir $(BOWTIE_INDEX_DIR)
-	bowtie-build $$($(BIN_DIR)/listFiles.sh , $(DATA_DIR)/per_contig/*.fa) $(BOWTIE_INDEX_DIR)/per_contig
-	bowtie-inspect $(BOWTIE_INDEX_DIR)/per_contig > $(BOWTIE_INDEX)/per_contig.fa
+	$(BIN_DIR)/build_bowtie_index.sh
 
 clean:
 	rm -f $(MAP_READS)
