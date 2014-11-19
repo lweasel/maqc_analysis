@@ -58,15 +58,4 @@ declare -A REF_TYPES=(
     ["rapaport_hbr_5"]="hbr" 
     ["au_hbr"]="hbr" )
 
-function get_random_id {
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1   
-}
-
-function list_files {
-    local DELIMITER=$1
-    shift
-    local FILES=$@
-    
-    OUTPUT=$(ls -1 $FILES | tr '\n' "$DELIMITER")
-    echo ${OUTPUT%$DELIMITER}    
-}
+source ${BIN_DIR}/bash-utils/functions.sh
