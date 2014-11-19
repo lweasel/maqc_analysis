@@ -1,0 +1,3 @@
+[submodule "bin/bash-utils"]
+	path = bin/bash-utils
+	url = https://github.com/lweasel/bash-utils.git
