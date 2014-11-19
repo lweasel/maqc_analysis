@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """Usage:
-    calculate_sailfish_read_depth
+    estimate_read_depth
         [--log-level=<log-level>]
         <quant-method>
         <quant-file>
@@ -125,7 +125,7 @@ def main(docstring):
         log_level_vals=LOG_LEVEL_VALS,
         quant_methods=str(QUANT_METHODS))
     options = docopt.docopt(
-        docstring, version="calculate_sailfish_read_depth v1.0")
+        docstring, version="estimate_read_depth v1.0")
 
     # Validate command-line options
     validate_command_line_options(options)
